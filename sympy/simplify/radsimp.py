@@ -842,7 +842,6 @@ def radsimp(expr, symbolic=True, max_terms=4):
     1/(a + b*sqrt(c))
 
     """
-    from sympy.core.basic import Basic
     from sympy.simplify.simplify import signsimp
 
     syms = symbols("a:d A:D")
@@ -1050,7 +1049,7 @@ def rad_rationalize(num, den):
     return rad_rationalize(num, den)
 
 
-def fraction(expr: Basic, exact: bool = False) -> Tuple[Basic, Basic]:
+def fraction(expr: Expr, exact: bool = False) -> Tuple[Expr, Expr]:
     """Returns a pair with expression's numerator and denominator.
        If the given expression is not a fraction then this function
        will return the tuple (expr, 1).
@@ -1141,7 +1140,7 @@ def fraction(expr: Basic, exact: bool = False) -> Tuple[Basic, Basic]:
     return Mul(*numer, evaluate=not exact), Mul(*denom, evaluate=not exact)
 
 
-def numer(expr: Basic, exact: bool = False) -> Basic:  # default matches fraction's default
+def numer(expr: Expr, exact: bool = False) -> Expr:  # default matches fraction's default
     return fraction(expr, exact=exact)[0]
 
 
