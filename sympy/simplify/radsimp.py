@@ -1132,9 +1132,9 @@ def fraction(expr: Expr, exact: bool = False) -> Tuple[Expr, Expr]:
             else:
                 numer.append(term)
         elif term.is_Rational and not term.is_Integer:
-            if term.p != 1:
-                numer.append(term.p)
-            denom.append(term.q)
+            if term.p != 1:  # type: ignore[attr-defined]
+                numer.append(term.p)  # type: ignore[attr-defined]
+            denom.append(term.q)  # type: ignore[attr-defined]
         else:
             numer.append(term)
     return Mul(*numer, evaluate=not exact), Mul(*denom, evaluate=not exact)
@@ -1144,7 +1144,7 @@ def numer(expr: Expr, exact: bool = False) -> Expr:  # default matches fraction'
     return fraction(expr, exact=exact)[0]
 
 
-def denom(expr: Basic, exact: bool = False) -> Basic:  # default matches fraction's default
+def denom(expr: Expr, exact: bool = False) -> Expr:  # default matches fraction's default
     return fraction(expr, exact=exact)[1]
 
 
