@@ -15,7 +15,6 @@ from sympy.functions.elementary.complexes import Abs
 from sympy.polys import gcd
 from sympy.simplify.sqrtdenest import sqrtdenest
 from sympy.utilities.iterables import iterable, sift
-from sympy.core.basic import Basic
 from sympy.core.expr import Expr
 from typing import Tuple
 
