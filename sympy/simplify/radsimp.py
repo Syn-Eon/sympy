@@ -1130,11 +1130,10 @@ def fraction(expr: Expr, exact: bool = False) -> tuple[Expr, Expr]:
             else:
                 numer.append(term)
         elif term.is_Rational and not term.is_Integer:
-            from sympy.core.numbers import Rational
-            assert isinstance(term, Rational)
-            if term.p != 1:
-                numer.append(term.p)
-            denom.append(term.q)
+            if isinstance(term, Rational):
+                if term.p != 1:
+                    numer.append(term.p)
+                denom.append(term.q)
         else:
             numer.append(term)
     return Mul(*numer, evaluate=not exact), Mul(*denom, evaluate=not exact)
